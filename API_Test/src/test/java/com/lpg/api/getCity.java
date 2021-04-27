@@ -76,27 +76,26 @@ public class getCity extends baseTest{
 		 
 		 //Compares rating in response is in descending order
 		 
-		 List<Integer> ratings =  resp.jsonPath().getList("rating");
+		 
+		 List<Number> ratings =  resp.jsonPath().getList("rating");
 		 
 		 int y = 0;
 		 
-		for(int rating :ratings ) {
+		for(Number rating :ratings ) {
 			if(y == 16) {
 				break;
 			}
 			System.out.println(ratings.get(y));
 			y++;
 			
-			int value = (int) Math.ceil(ratings.get(y++));
+        int value = (int) Math.ceil(ratings.get(y++).doubleValue()); 
 			
-			if(rating > value) {
+			if(rating.doubleValue() > value) { 
 				System.out.println("true");
 			}else {
 				System.out.println("fail");
 			}
-			
 		}
-		
 	}
 
 	
